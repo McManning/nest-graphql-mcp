@@ -3,21 +3,27 @@
   "version": "0.1.0",
   "description": "Expose specific GraphQL queries and mutations to AI agents as MCP (Model Context Protocol) tools in NestJS.",
   "license": "MIT",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "development": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.js",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./package.json": "./package.json"
   },
   "files": [
     "src",
+    "dist",
     "README.md",
     "LICENSE.md"
   ],
+  "scripts": {
+    "build": "tsc -p tsconfig.lib.json",
+    "prepare": "tsc -p tsconfig.lib.json"
+  },
   "peerDependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0",
     "@nestjs/common": "^10.0.0",
